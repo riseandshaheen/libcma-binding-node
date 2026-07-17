@@ -7,7 +7,7 @@ import { describe, it } from "node:test";
  */
 describe("template libcma dependency", () => {
   it("opens an Ether buffer ledger and moves funds", async () => {
-    const { Ledger } = await import("@mugen-builders/libcma");
+    const { Ledger } = await import("@riseandshaheen/libcma");
     const ledger = Ledger.openEtherBuffer(
       { maxAccounts: 32 },
       { backend: "memory" },

@@ -20,6 +20,6 @@ Both wire up:
 Add your logic in `handleInput` / `handleQuery`. See each template's README
 for host tests, `cartesi build`, and the emergency-withdrawal notes.
 
-Templates resolve `@mugen-builders/libcma` as `file:../..`; to use one
+Templates resolve `@riseandshaheen/libcma` as `file:../..`; to use one
 outside this repository, copy the directory and change the dependency to the
 published package (or vendor the binding and keep the `file:` path).

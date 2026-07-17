@@ -70,7 +70,7 @@ Emergency withdrawal proves balances from a dedicated flash drive whose bytes mu
 | Full ERC-20 / 721 / 1155 ledger API | Ether MVP first; extend with same patterns |
 | Portal decode / voucher encode (`cma_decode_*`, `cma_encode_voucher`) | Apps keep viem for Phase 1; add as Phase 1.5/2 |
 | `@deroll/cmio` migration | Orthogonal (rollup I/O, not ledger) |
-| Publishing under `@cartesi/*` | Org decision; start private or `@mugen-builders/*` |
+| Publishing under `@cartesi/*` | Org decision; start under `@riseandshaheen/*` |
 | Pure-JS ledger clone | Forbidden — proof mismatch risk |
 
 ---
@@ -143,7 +143,7 @@ libcma-binding-node/
     └── build.yml            # host tests + riscv64 prebuild
 ```
 
-Keep this directory as the package root so it can be split into its own git repo under Mugen-Builders without restructuring.
+Keep this directory as the package root so it can be split into its own git repo under riseandshaheen without restructuring.
 
 ---
 
@@ -152,7 +152,7 @@ Keep this directory as the package root so it can be split into its own git repo
 Keep the surface close to the Rust binding’s ledger helpers, but Ether-first and ergonomic for Node.
 
 ```ts
-import { Ledger } from "@mugen-builders/libcma"; // proposed name
+import { Ledger } from "@riseandshaheen/libcma"; // proposed name
 
 /** File-backed (machine: "/dev/pmem1") or host test file. */
 export type LedgerFileConfig = {
@@ -202,7 +202,7 @@ export class LedgerError extends Error {
 2. **Addresses** accept `0x${string}` / `Uint8Array`; normalize with checksummed hex at the TS boundary.
 3. **Amounts** are `bigint` only (reject `number` to avoid precision bugs).
 4. **Synchronous API** — unlike rollup `finish()`, ledger calls do not yield the machine; no need for async.
-5. **Bundlers** — mark the native addon as external; document `esbuild`/`webpack` config (`external: ['@mugen-builders/libcma']` or createRequire for `.node`). Do not bundle the `.node` into `dist/index.js`.
+5. **Bundlers** — mark the native addon as external; document `esbuild`/`webpack` config (`external: ['@riseandshaheen/libcma']` or createRequire for `.node`). Do not bundle the `.node` into `dist/index.js`.
 
 ### Convenience for portal deposits (optional Phase 1)
 
@@ -311,7 +311,7 @@ examples/typescript-wallet/   (or any JS/TS dApp)
   src/                     → Ledger instead of in-memory wallet
   cartesi.toml             → drives.accounts + withdrawal.config
   Dockerfile               → ensure native .node + libcma available on riscv64
-  package.json             → dependency on @mugen-builders/libcma
+  package.json             → dependency on @riseandshaheen/libcma
 ```
 
 Only the ETH ledger moves onto the drive; app business logic stays unchanged.
@@ -327,15 +327,15 @@ Only the ETH ledger moves onto the drive; app business logic stays unchanged.
 | Host cannot build libcma | Buffer mock for unit tests; real file tests in Docker CI |
 | GCC 14 / cross-compile pain | Steal recipe from Rust binding / CMA wallet `INTEGRATION_NOTES` |
 | Scope creep into full parser | Ether-only Phase 1; parser as Phase 1.5 with separate milestone |
-| Dual ownership with Deroll | Stay under Mugen-Builders; optional later contribution of a drive-backed wallet backend to Deroll |
+| Dual ownership with Deroll | Ship under riseandshaheen for now; optional later contribution of a drive-backed wallet backend to Deroll |
 
 ---
 
 ## 12. Open questions (resolve before M1)
 
-1. **Package scope name:** `@mugen-builders/libcma` vs `@mugen-builders/libcma-node`?
+1. **Package scope name:** `@riseandshaheen/libcma` vs `@riseandshaheen/libcma-node`?
 2. **Host backend:** behavioral mock vs requiring a host-linked libcma for all tests?
-3. **Monorepo vs standalone repo:** develop here then extract, or create `Mugen-Builders/libcma-binding-node` immediately?
+3. **Monorepo vs standalone repo:** develop here then extract, or create `riseandshaheen/libcma-binding-node` immediately?
 4. **License:** match Rust binding (MIT) vs Apache-2.0 (cmio)? Prefer MIT unless Cartesi packaging requires otherwise.
 
 ---

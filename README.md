@@ -2,7 +2,7 @@
 
 Node.js / TypeScript bindings for **[libcma](https://github.com/Mugen-Builders/machine-asset-tools)** — the Cartesi proveable asset ledger used for **contracts v3 emergency withdrawal**.
 
-Package name (npm): `@mugen-builders/libcma`  
+Package name (npm): `@riseandshaheen/libcma`  
 Status: **Phase 1 in progress** (Ether MVP + host backends). See [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ## Quick start
@@ -14,7 +14,7 @@ npm test
 ```
 
 ```ts
-import { Ledger, ACCOUNTS_DRIVE_PATH } from "@mugen-builders/libcma";
+import { Ledger, ACCOUNTS_DRIVE_PATH } from "@riseandshaheen/libcma";
 
 // Host / unit tests — TypeScript memory backend (or native mock if built)
 const ledger = Ledger.openEtherBuffer(
@@ -81,7 +81,7 @@ On install inside the Cartesi machine / riscv64 image, `scripts/install-native.m
 Machine usage:
 
 ```ts
-import { Ledger, ACCOUNTS_DRIVE_PATH, ACCOUNTS_DRIVE_SIZE_4MIB } from "@mugen-builders/libcma";
+import { Ledger, ACCOUNTS_DRIVE_PATH, ACCOUNTS_DRIVE_SIZE_4MIB } from "@riseandshaheen/libcma";
 
 const ledger = Ledger.openEtherFile(
   ACCOUNTS_DRIVE_PATH,

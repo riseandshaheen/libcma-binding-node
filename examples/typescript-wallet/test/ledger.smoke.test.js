@@ -10,7 +10,7 @@ describe("template libcma dependency", () => {
   it("opens an Ether buffer ledger", async () => {
     const require = createRequire(import.meta.url);
     // Resolve from the example's node_modules after npm install
-    const { Ledger } = await import("@mugen-builders/libcma");
+    const { Ledger } = await import("@riseandshaheen/libcma");
     const ledger = Ledger.openEtherBuffer(
       { maxAccounts: 32 },
       { backend: "memory" },
@@ -19,6 +19,6 @@ describe("template libcma dependency", () => {
     ledger.depositEther(alice, 1000n);
     assert.equal(ledger.getEtherBalance(alice), 1000n);
     ledger.close();
-    assert.ok(require.resolve("@mugen-builders/libcma"));
+    assert.ok(require.resolve("@riseandshaheen/libcma"));
   });
 });

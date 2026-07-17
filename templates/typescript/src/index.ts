@@ -2,7 +2,7 @@
  * Cartesi Rollups TypeScript template — libcma Ether ledger boilerplate.
  *
  * Rollup I/O: native libcmt via @deroll/cmio (no HTTP /finish server).
- * Ledger:     @mugen-builders/libcma on /dev/pmem1 (emergency-withdrawal ready).
+ * Ledger:     @riseandshaheen/libcma on /dev/pmem1 (emergency-withdrawal ready).
  *
  * Out of the box:
  *   - EtherPortal deposits are credited to the sender on the accounts drive
@@ -20,7 +20,7 @@ import {
   ACCOUNTS_DRIVE_SIZE_4MIB,
   Ledger,
   type Address,
-} from "@mugen-builders/libcma";
+} from "@riseandshaheen/libcma";
 import { getAddress, stringToHex } from "viem";
 
 /** Devnet EtherPortal; override per network via env. */

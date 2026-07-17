@@ -2,7 +2,7 @@
 
 Boilerplate for a Cartesi Rollups v2 application whose balances live on a
 proveable **accounts drive** (`/dev/pmem1`) via
-[`@mugen-builders/libcma`](../../README.md) — ready for contracts v3
+[`@riseandshaheen/libcma`](../../README.md) — ready for contracts v3
 **emergency withdrawal**.
 
 Out of the box the app:

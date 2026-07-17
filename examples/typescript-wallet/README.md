@@ -3,7 +3,7 @@
 Minimal **TypeScript** Cartesi Rollups v2 dApp that:
 
 1. Talks to the machine via **`@deroll/cmio`** (native libcmt — no HTTP `/finish` server)
-2. Stores Ether balances in **`@mugen-builders/libcma`** on the accounts flash drive
+2. Stores Ether balances in **`@riseandshaheen/libcma`** on the accounts flash drive
 
 Same split as the Rust CMA wallet demo (`libcmt` for I/O, `libcma` for the ledger).
 
@@ -87,7 +87,7 @@ health
 
 ## Notes
 
-- esbuild keeps `@deroll/cmio` and `@mugen-builders/libcma` **external** (native `.node` loaders).
+- esbuild keeps `@deroll/cmio` and `@riseandshaheen/libcma` **external** (native `.node` loaders).
 - Single-asset Ether ledger matches `log2_leaves_per_account = 0`.
 - Portal addresses mirror the Rust CMA wallet pattern (env overrides + address book); token portal deposits are rejected until the Node binding exposes multi-asset `Ledger` init.
 - Aligns with [Rust CMA wallet](https://github.com/Mugen-Builders/CMA-Rust-Wallet-Demo-App): libcmt I/O + libcma ledger.

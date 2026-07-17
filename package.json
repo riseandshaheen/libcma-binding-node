@@ -1,5 +1,5 @@
 {
-  "name": "@mugen-builders/libcma",
+  "name": "@riseandshaheen/libcma",
   "version": "0.1.0-alpha.0",
   "description": "Node.js / TypeScript bindings for libcma — Cartesi proveable asset ledger",
   "license": "MIT",

@@ -33,11 +33,11 @@ ENV LIBCMA_FORCE_REAL=1
 RUN npm run build:native
 
 WORKDIR /opt/cartesi/dapp
-RUN node -e "const p=require('./package.json'); p.dependencies['@mugen-builders/libcma']='file:/opt/cartesi/libcma'; require('fs').writeFileSync('package.json', JSON.stringify(p,null,2));"
+RUN node -e "const p=require('./package.json'); p.dependencies['@riseandshaheen/libcma']='file:/opt/cartesi/libcma'; require('fs').writeFileSync('package.json', JSON.stringify(p,null,2));"
 RUN npm install
 
 # No bundler in the JS template — ship the whole node_modules and swap the
-# @mugen-builders/libcma npm link for a symlink to the built /opt/cartesi/libcma.
+# @riseandshaheen/libcma npm link for a symlink to the built /opt/cartesi/libcma.
 RUN mkdir -p /opt/cartesi/runtime/libcma /opt/cartesi/runtime/app \
   && cp -a /opt/cartesi/dapp/src/index.js /opt/cartesi/runtime/app/ \
   && cp -a /opt/cartesi/dapp/package.json /opt/cartesi/runtime/app/ \
@@ -48,9 +48,9 @@ RUN mkdir -p /opt/cartesi/runtime/libcma /opt/cartesi/runtime/app \
   && cp -a /opt/cartesi/libcma/build/Release/*.node /opt/cartesi/runtime/libcma/build/Release/ \
   && cp -a /opt/cartesi/libcma/node_modules /opt/cartesi/runtime/libcma/ \
   && cp -a /opt/cartesi/dapp/node_modules /opt/cartesi/runtime/app/node_modules \
-  && rm -rf /opt/cartesi/runtime/app/node_modules/@mugen-builders/libcma \
-  && mkdir -p /opt/cartesi/runtime/app/node_modules/@mugen-builders \
-  && ln -sfn /opt/cartesi/libcma /opt/cartesi/runtime/app/node_modules/@mugen-builders/libcma
+  && rm -rf /opt/cartesi/runtime/app/node_modules/@riseandshaheen/libcma \
+  && mkdir -p /opt/cartesi/runtime/app/node_modules/@riseandshaheen \
+  && ln -sfn /opt/cartesi/libcma /opt/cartesi/runtime/app/node_modules/@riseandshaheen/libcma
 
 FROM --platform=linux/riscv64 cartesi/node:${NODE_VERSION}-noble-slim
 

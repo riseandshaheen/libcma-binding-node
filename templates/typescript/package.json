@@ -6,7 +6,7 @@
   "type": "module",
   "dependencies": {
     "@deroll/cmio": "0.2.0-alpha.2",
-    "@mugen-builders/libcma": "file:../..",
+    "@riseandshaheen/libcma": "file:../..",
     "viem": "^2"
   },
   "devDependencies": {

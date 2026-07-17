@@ -2,7 +2,7 @@
  * Cartesi Rollups TypeScript template — Ether wallet backed by libcma + @deroll/cmio.
  *
  * Rollup I/O: native libcmt via @deroll/cmio (no HTTP /finish server).
- * Ledger:     @mugen-builders/libcma on /dev/pmem1 (emergency-withdrawal ready).
+ * Ledger:     @riseandshaheen/libcma on /dev/pmem1 (emergency-withdrawal ready).
  *
  * Advance:
  *   - EtherPortal deposit → ledger.creditEtherDeposit
@@ -27,7 +27,7 @@ import {
   Ledger,
   LedgerError,
   type Address,
-} from "@mugen-builders/libcma";
+} from "@riseandshaheen/libcma";
 import { getAddress, stringToHex } from "viem";
 import {
   loadPortalAddresses,

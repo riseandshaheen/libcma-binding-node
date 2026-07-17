@@ -13,7 +13,7 @@ await esbuild.build({
   outfile: "dist/index.js",
   packages: "bundle",
   external: [
-    "@mugen-builders/libcma",
+    "@riseandshaheen/libcma",
     "@deroll/cmio",
     "node-gyp-build",
     "node-addon-api",

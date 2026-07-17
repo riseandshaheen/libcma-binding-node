@@ -33,7 +33,7 @@ ENV LIBCMA_FORCE_REAL=1
 RUN npm run build:native
 
 WORKDIR /opt/cartesi/dapp
-RUN node -e "const p=require('./package.json'); p.dependencies['@mugen-builders/libcma']='file:/opt/cartesi/libcma'; require('fs').writeFileSync('package.json', JSON.stringify(p,null,2));"
+RUN node -e "const p=require('./package.json'); p.dependencies['@riseandshaheen/libcma']='file:/opt/cartesi/libcma'; require('fs').writeFileSync('package.json', JSON.stringify(p,null,2));"
 RUN npm install && npm run build
 
 RUN mkdir -p /opt/cartesi/runtime/libcma /opt/cartesi/runtime/app \
@@ -44,9 +44,9 @@ RUN mkdir -p /opt/cartesi/runtime/libcma /opt/cartesi/runtime/app \
   && mkdir -p /opt/cartesi/runtime/libcma/build/Release \
   && cp -a /opt/cartesi/libcma/build/Release/*.node /opt/cartesi/runtime/libcma/build/Release/ \
   && cp -a /opt/cartesi/libcma/node_modules /opt/cartesi/runtime/libcma/ \
-  && mkdir -p /opt/cartesi/runtime/app/node_modules/@mugen-builders \
+  && mkdir -p /opt/cartesi/runtime/app/node_modules/@riseandshaheen \
   && mkdir -p /opt/cartesi/runtime/app/node_modules/@deroll \
-  && ln -sfn /opt/cartesi/libcma /opt/cartesi/runtime/app/node_modules/@mugen-builders/libcma \
+  && ln -sfn /opt/cartesi/libcma /opt/cartesi/runtime/app/node_modules/@riseandshaheen/libcma \
   && cp -a /opt/cartesi/dapp/node_modules/@deroll/cmio /opt/cartesi/runtime/app/node_modules/@deroll/cmio \
   && cp -a /opt/cartesi/dapp/node_modules/node-gyp-build /opt/cartesi/runtime/app/node_modules/node-gyp-build \
   && cp -a /opt/cartesi/dapp/node_modules/node-addon-api /opt/cartesi/runtime/app/node_modules/node-addon-api
