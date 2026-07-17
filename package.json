@@ -26,13 +26,13 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "AUTHORS",
     "LICENSE",
     "README.md",
     "ARCHITECTURE.md",
     "binding.gyp",
     "lib/",
     "native/",
+    "scripts/",
     "prebuilds/",
     "deps/machine-asset-tools/include/",
     "deps/machine-guest-tools/sys-utils/libcmt/include/"
