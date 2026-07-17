@@ -1,0 +1,6 @@
+node_modules/
+dist/
+vendor/
+.cartesi/
+*.log
+.DS_Store

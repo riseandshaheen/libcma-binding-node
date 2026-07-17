@@ -1,0 +1,21 @@
+node_modules/
+lib/
+build/
+prebuilds/
+*.node
+.DS_Store
+*.log
+.turbo/
+dist/
+vendor/
+.cartesi/
+
+# Local emergency-withdrawal / deploy scratch files
+.app*
+.ether_builder
+.generic_builder
+
+# libcma build artifacts (produced by scripts/build-libcma-riscv64.sh)
+deps/machine-asset-tools/build/
+deps/machine-asset-tools/third-party/
+deps.bak.local/

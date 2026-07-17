@@ -1,0 +1,27 @@
+{
+  "name": "typescript-libcma-wallet",
+  "version": "0.1.0",
+  "description": "Cartesi Rollups TypeScript template with libcma ledger + @deroll/cmio (no HTTP rollup server)",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@cartesi/viem": "2.0.0-alpha.31",
+    "@deroll/cmio": "0.2.0-alpha.2",
+    "@mugen-builders/libcma": "file:../..",
+    "viem": "^2"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "compile": "tsc --noEmit && node esbuild.config.mjs",
+    "build": "npm run compile",
+    "start": "LIBCMA_BACKEND=memory tsx src/index.ts",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": ["cartesi", "rollups", "libcma", "cmio", "typescript"],
+  "license": "MIT"
+}

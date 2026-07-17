@@ -1,0 +1,74 @@
+{
+  "name": "@mugen-builders/libcma",
+  "version": "0.1.0-alpha.0",
+  "description": "Node.js / TypeScript bindings for libcma — Cartesi proveable asset ledger",
+  "license": "MIT",
+  "author": "riseandshaheen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riseandshaheen/libcma-binding-node.git"
+  },
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.cts",
+        "default": "./lib/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "AUTHORS",
+    "LICENSE",
+    "README.md",
+    "ARCHITECTURE.md",
+    "binding.gyp",
+    "lib/",
+    "native/",
+    "prebuilds/",
+    "deps/machine-asset-tools/include/",
+    "deps/machine-guest-tools/sys-utils/libcmt/include/"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib build",
+    "build:ts": "tsup",
+    "build:native": "node-gyp rebuild",
+    "build:libcma:riscv64": "bash scripts/build-libcma-riscv64.sh",
+    "build:native:riscv64": "bash scripts/build-native-riscv64.sh",
+    "build": "npm run build:ts",
+    "install": "node scripts/install-native.mjs",
+    "test": "npm run build:ts && node --test test/*.test.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.3.0",
+    "node-gyp-build": "^4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "node-gyp": "^11.2.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  },
+  "binary": {
+    "napi_versions": [8]
+  },
+  "keywords": [
+    "cartesi",
+    "rollups",
+    "libcma",
+    "ledger",
+    "emergency-withdrawal"
+  ]
+}

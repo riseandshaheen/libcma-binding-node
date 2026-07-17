@@ -1,0 +1,6 @@
+[submodule "deps/machine-asset-tools"]
+	path = deps/machine-asset-tools
+	url = https://github.com/Mugen-Builders/machine-asset-tools.git
+[submodule "deps/machine-guest-tools"]
+	path = deps/machine-guest-tools
+	url = https://github.com/cartesi/machine-guest-tools.git

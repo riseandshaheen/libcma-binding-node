@@ -1,0 +1,18 @@
+{
+  "name": "libcma-javascript-template",
+  "version": "0.1.0",
+  "description": "Cartesi Rollups JavaScript boilerplate with a libcma Ether ledger on the accounts drive",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@deroll/cmio": "0.2.0-alpha.2",
+    "@mugen-builders/libcma": "file:../..",
+    "viem": "^2"
+  },
+  "scripts": {
+    "start": "LIBCMA_BACKEND=memory node src/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": ["cartesi", "rollups", "libcma", "template", "javascript"],
+  "license": "MIT"
+}

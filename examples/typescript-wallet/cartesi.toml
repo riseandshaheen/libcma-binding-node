@@ -1,0 +1,43 @@
+# Cartesi Machine config — TypeScript libcma Ether wallet template.
+#
+# Drives:
+#   root     → Dockerfile app image (/dev/pmem0)
+#   accounts → raw 4 MiB flash drive for libcma single-asset Ether ledger (/dev/pmem1)
+#
+# After `cartesi build`, derive accounts_drive_start_index:
+#   jq -r '.config.flash_drive[] | select(.length==4194304) | (.start/4194304|floor)' \
+#     .cartesi/image/config.json
+
+sdk = "cartesi/sdk:0.12.0-alpha.41"
+
+[machine]
+ram_length = "128Mi"
+use_docker_env = true
+use_docker_workdir = true
+final_hash = true
+
+[drives.root]
+builder = "docker"
+dockerfile = "Dockerfile"
+format = "ext2"
+
+[drives.accounts]
+builder = "empty"
+format = "raw"
+size = 4194304
+mount = false
+user = "dapp"
+
+# Emergency withdrawal / foreclosure. `accounts_drive_start_index` must match the
+# built machine (see jq above). Guardian = Anvil mnemonic account 0.
+#
+# Default address-book `TestUsdWithdrawalOutputBuilder` pays TestToken, not ETH.
+# Deploy `devnet/contracts/EtherWithdrawalOutputBuilder.sol` on Anvil and set its
+# address here (or pass --withdrawal-config at deploy). Leaf layout matches
+# LibUsdAccount: LE u64 balance + 20-byte owner (log2_leaves_per_account = 0).
+[withdrawal.config]
+guardian = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+log2_leaves_per_account = 0
+log2_max_num_of_accounts = 12
+accounts_drive_start_index = 309237645312
+withdrawal_output_builder = "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF"

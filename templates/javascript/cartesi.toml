@@ -1,0 +1,43 @@
+# Cartesi Machine config — JavaScript + libcma template.
+#
+# Drives:
+#   root     → Dockerfile app image (/dev/pmem0)
+#   accounts → raw 4 MiB flash drive for the libcma Ether ledger (/dev/pmem1)
+#
+# After `cartesi build`, derive accounts_drive_start_index:
+#   physical_start / 2^(5 + log2_leaves_per_account + log2_max_num_of_accounts)
+#   jq -r '.config.flash_drive[] | select(.length==4194304) | .start' .cartesi/image/config.json
+
+sdk = "cartesi/sdk:0.12.0-alpha.41"
+
+[machine]
+ram_length = "128Mi"
+use_docker_env = true
+use_docker_workdir = true
+final_hash = true
+
+[drives.root]
+builder = "docker"
+dockerfile = "Dockerfile"
+format = "ext2"
+
+[drives.accounts]
+builder = "empty"
+format = "raw"
+size = 4194304
+mount = false
+user = "dapp"
+
+# Emergency withdrawal / foreclosure (optional — remove the section to deploy
+# without foreclosure support). Values below assume the 4 MiB accounts drive
+# lands at 0x90000000000000 with 4096 (2^12) 32-byte account leaves.
+#
+# The default devnet TestUsdWithdrawalOutputBuilder pays TestToken, not ETH.
+# For Ether recovery deploy an EtherWithdrawalOutputBuilder (leaf layout:
+# LE u64 balance + 20-byte owner) and put its address here.
+[withdrawal.config]
+guardian = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+log2_leaves_per_account = 0
+log2_max_num_of_accounts = 12
+accounts_drive_start_index = 309237645312
+withdrawal_output_builder = "0x0745787835A019cd4dae8EDB541Fbc0647793d63"
