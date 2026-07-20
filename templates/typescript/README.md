@@ -52,3 +52,18 @@ drive (4096 × 32-byte Ether leaves). For actual ETH recovery deploy an
 `EtherWithdrawalOutputBuilder` and point `withdrawal_output_builder` at it —
 see `examples/typescript-wallet/devnet/contracts/` for a working contract and
 end-to-end flow.
+
+## Contributing
+
+`package.json` depends on the published `@riseandshaheen/libcma` from npm.
+If you are working on the binding itself, switch to a local link:
+
+```sh
+# In package.json, replace the version string:
+#   "@riseandshaheen/libcma": "0.1.0-alpha.0"
+# with:
+#   "@riseandshaheen/libcma": "file:../.."
+npm install
+```
+
+Remember to revert to the published version before committing.

@@ -91,3 +91,19 @@ health
 - Single-asset Ether ledger matches `log2_leaves_per_account = 0`.
 - Portal addresses mirror the Rust CMA wallet pattern (env overrides + address book); token portal deposits are rejected until the Node binding exposes multi-asset `Ledger` init.
 - Aligns with [Rust CMA wallet](https://github.com/Mugen-Builders/CMA-Rust-Wallet-Demo-App): libcmt I/O + libcma ledger.
+
+## Contributing
+
+`package.json` points at the published `@riseandshaheen/libcma` on npm. If
+you are developing the binding itself alongside this example, switch to a
+local link so your changes are picked up immediately:
+
+```sh
+# In package.json, replace the version string:
+#   "@riseandshaheen/libcma": "0.1.0-alpha.0"
+# with a file reference to the repo root:
+#   "@riseandshaheen/libcma": "file:../.."
+npm install
+```
+
+Remember to revert to the published version before committing.

@@ -7,7 +7,7 @@
   "dependencies": {
     "@cartesi/viem": "2.0.0-alpha.31",
     "@deroll/cmio": "0.2.0-alpha.2",
-    "@riseandshaheen/libcma": "file:../..",
+    "@riseandshaheen/libcma": "0.1.0-alpha.0",
     "viem": "^2"
   },
   "devDependencies": {
