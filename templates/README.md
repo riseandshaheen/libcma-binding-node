@@ -20,6 +20,6 @@ Both wire up:
 Add your logic in `handleInput` / `handleQuery`. See each template's README
 for host tests, `cartesi build`, and the emergency-withdrawal notes.
 
-Templates resolve `@riseandshaheen/libcma` as `file:../..`; to use one
-outside this repository, copy the directory and change the dependency to the
-published package (or vendor the binding and keep the `file:` path).
+Templates depend on the published npm package
+[`@riseandshaheen/libcma`](https://www.npmjs.com/package/@riseandshaheen/libcma).
+Just `npm install` — no need to vendor or link the parent directory.
